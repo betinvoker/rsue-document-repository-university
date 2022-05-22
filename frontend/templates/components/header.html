@@ -1,0 +1,30 @@
+{% load static extra_settings %}
+{% comment %} <a href="{% if request.path != "/" %}/{% endif%}#" class="mx-2 text-white"></a> {% endcomment %}
+
+
+<header class="fixed w-screen text-white body-font bg-green-900/75 ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-rsue ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.svg' %}">
+      </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Главная страница</a>
+          </li>
+        </ul>
+        <div class="usrename">
+          {% if request.user.is_authenticated %}
+            {{ request.user.username }}
+            {% if request.user.is_staff or request.user.is_superuser %}
+            <a href="/admin/">Панель администрирования</a>
+            {% endif %}
+            <a href="{% url 'logout' %}">Выйти</a>
+          {% else %}
+            <a href="{% url 'login' %}">Войти</a>
+          {% endif %}
+        </div> 
+    </div>
+  </nav>
+</header>
+

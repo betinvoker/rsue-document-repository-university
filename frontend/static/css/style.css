@@ -1,0 +1,9 @@
+.bg-rsue {
+    background-color: #0e1060;
+}
+a.navbar-brand a {
+    color: white;
+}
+a.navbar-brand img {
+    height: 40px !important;
+}
