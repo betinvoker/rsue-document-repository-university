@@ -18,6 +18,27 @@ class UploadPackageDocuments(View):
     def post(self, request):
         form = PackageDocumentsForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            package_documents_instance = form.save()
+            package_documents_instance.files_rename()
             return render(request, template_name='upload-package-documents.html', context={"form":form})
         return render(request, template_name='upload-package-documents.html', context={"form":form})
+
+
+@method_decorator(login_required, name='dispatch')
+class ListPackageDocuments(View):
+
+    def get_list_package_documents(self):
+        return PackageDocuments.objects.all()
+
+    def get(self, request):
+        form = PackageDocumentsForm()
+        objects = self.get_list_package_documents()
+        return render(request, template_name='list-package-documents.html', context={"form":form,"objects":objects})
+
+    def post(self, request):
+        form = PackageDocumentsForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     package_documents_instance = form.save()
+        #     package_documents_instance.files_rename()
+        #     return render(request, template_name='list-package-documents.html', context={"form":form,"objects":objects})
+        return render(request, template_name='list-package-documents.html', context={"form":form,"objects":objects})

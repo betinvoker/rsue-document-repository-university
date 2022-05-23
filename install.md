@@ -9,7 +9,20 @@
 ```cmd
 poetry run pip install -U setuptools
 poetry install --no-root
-poetry run task manage initconfig --debug
+```
+
+Создайте файл .env в корне проекта
+
+Содержимое фала
+```
+DEBUG=true
+SITE_DOMAIN="*"
+SECRET_KEY=""
+DATABASE_URL=sqlite:///public/db.sqlite3
+```
+
+
+```cmd
 poetry run task migrate
 poetry run task manage createadmin
 ```

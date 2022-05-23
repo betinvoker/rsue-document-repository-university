@@ -18,5 +18,11 @@ class PackageDocuments(models.Model):
         verbose_name = _("Пакет документов")
         verbose_name_plural = _("Пакеты документов")
 
+    def files_rename(self):
+        name = f"{self.year.name}год_{self.level_education.name}_{self.qualification.code}_{self.teacher_full_name}_{self.students_full_name}"
+        self.review.name = name + "_Отзыв." + self.review.name.split(".")[-1]
+        self.graduation_work.name = name + "_ВКР." + self.graduation_work.name.split(".")[-1]
+        self.save()
+
     def __str__(self):
         return self.teacher_full_name

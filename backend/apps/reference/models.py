@@ -26,7 +26,7 @@ class LevelEducation(models.Model):
         return self.name
 
 class Qualification(models.Model):
-    code = models.CharField(_("Код"), max_length=25, unique=True)
+    code = models.CharField(_("Код"), max_length=25)
     name = models.CharField(_("Наименование"), max_length=500)
 
     class Meta:
@@ -34,4 +34,4 @@ class Qualification(models.Model):
         verbose_name_plural = _("Квалификации образования")
 
     def __str__(self):
-        return self.name
+        return f"{self.code} - {self.name}"
