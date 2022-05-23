@@ -3,14 +3,17 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
-from apps.storage.views import UploadPackageDocuments
+from apps.storage.views import UploadPackageDocuments, ListPackageDocuments
 from django.contrib.auth.views import LoginView, LogoutView
+
+
 urlpatterns = [
     path("admin/", admin.site.urls,name="admin"),
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+    path("list/", ListPackageDocuments.as_view(), name="list-package-documents"),
     path(
-        "", UploadPackageDocuments.as_view(), name="package-documents-form"
+        "", UploadPackageDocuments.as_view(), name="upload-package-documents"
     ),
 ]
 

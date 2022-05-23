@@ -8,10 +8,10 @@ DEFAULT_APPS = [
     "django.contrib.humanize",
     "widget_tweaks",
     "extra_settings",
+    "django_filters",
 ]
 
 PROJECT_APPS = [
-    "apps.services",
     "apps.users",
     "apps.reference",
     "apps.storage",

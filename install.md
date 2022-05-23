@@ -6,9 +6,15 @@
 
 ![power shell](https://github.com/kiselevvn/legal-service/blob/main/assets/img/cmd-admin.PNG?raw=true)
 
+Создать и активировать виртуальное окружение
 ```cmd
-poetry run pip install -U setuptools
-poetry install --no-root
+python -m venv .venv
+python -m venv .venv
+```
+
+```cmd
+pip install poetry
+poetry install
 ```
 
 Создайте файл .env в корне проекта
@@ -24,5 +30,5 @@ DATABASE_URL=sqlite:///public/db.sqlite3
 
 ```cmd
 poetry run task migrate
-poetry run task manage createadmin
+poetry run task manage createsuperuser
 ```

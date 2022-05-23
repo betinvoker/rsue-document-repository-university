@@ -12,7 +12,7 @@ class UserAdmin(BaseUserAdmin):
     use_select2_form = False
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name","отчесиво_name", "email")}),
+        (_("Personal info"), {"fields": ("first_name", "last_name", "second_name", "email")}),
         (
             _("Permissions"),
             {

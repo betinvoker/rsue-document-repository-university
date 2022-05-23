@@ -6,6 +6,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Year(models.Model):
+    """
+    Модель
+    Года защиты ВКР
+    """
+
     name = models.PositiveIntegerField(_("Наименование"), unique=True)
 
     class Meta:
@@ -15,7 +20,13 @@ class Year(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class LevelEducation(models.Model):
+    """
+    Модель
+    Уровнь образования
+    """
+
     name = models.CharField(_("Наименование"), max_length=50, unique=True)
 
     class Meta:
@@ -25,7 +36,13 @@ class LevelEducation(models.Model):
     def __str__(self):
         return self.name
 
+
 class Qualification(models.Model):
+    """
+    Модель
+    Квалификация
+    """
+
     code = models.CharField(_("Код"), max_length=25)
     name = models.CharField(_("Наименование"), max_length=500)
 
