@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from .filters import PackageDocumentsFilter
 from django.core.paginator import Paginator
 
+
 @method_decorator(login_required, name='dispatch')
 class UploadPackageDocuments(View):
     """
