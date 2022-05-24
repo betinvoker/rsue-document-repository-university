@@ -5,24 +5,35 @@
 <header class="fixed w-screen text-white body-font bg-green-900/75 ">
   <nav class="navbar navbar-expand-lg navbar-dark bg-rsue ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img src="{% static 'images/logo.svg' %}">
       </a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Главная страница</a>
+            <a class="nav-link active" aria-current="page" href="/">Загрузка</a>
+           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'list-package-documents' %}">Поиск</a>
           </li>
         </ul>
-        <div class="usrename">
-          {% if request.user.is_authenticated %}
-            {{ request.user.username }}
+        <div class="username">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page">{{ request.user.username }}</a>
+            </li>
             {% if request.user.is_staff or request.user.is_superuser %}
-            <a href="/admin/">Панель администрирования</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/admin/" style="color: #ffffff; text-decoration: none;">Панель администрирования</a>
+            </li>
             {% endif %}
-            <a href="{% url 'logout' %}">Выйти</a>
-          {% else %}
-            <a href="{% url 'login' %}">Войти</a>
-          {% endif %}
+              <a class="nav-link active" aria-current="page" href="{% url 'logout' %}" style="color: #ffffff; text-decoration: none;">Выйти</a>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}" style="color: #ffffff; text-decoration: none;">Войти</a>
+            </li>
+            {% endif %}
+          </ul>
         </div> 
     </div>
   </nav>

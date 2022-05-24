@@ -10,10 +10,9 @@ class PackageDocumentsFilter(django_filters.FilterSet):
     class Meta:
         model = PackageDocuments
         fields = [
-            "year__name", 
-            "level_education__name", 
-            "qualification__name", 
-            "qualification__code", 
+            "year", 
+            "level_education", 
+            "qualification",
             "teacher_full_name", 
             "students_full_name"
         ]

@@ -41,20 +41,21 @@ class ListPackageDocuments(View):
     пакетов документов
     """
 
-    COUNT_ELEMENTS_PAGE = 1
+    COUNT_ELEMENTS_PAGE = 5
 
     def get_list_package_documents(self):
         """
         Возвращает базовый queryset
         пакета документов
         """
-        return PackageDocuments.objects.all()
+        return PackageDocuments.objects.select_related("year","level_education","qualification")
 
     def get(self, request):
         """
         Обработка GET запроса
         """
         filter = PackageDocumentsFilter(request.GET, self.get_list_package_documents())
-        paginator = Paginator(filter.qs,self.COUNT_ELEMENTS_PAGE)
+        page_number = request.GET.get('page')
+        paginator = Paginator(filter.qs,self.COUNT_ELEMENTS_PAGE).get_page(page_number)
         return render(request, template_name='list-package-documents.html', context={"form":filter.form,"page_objects":paginator})
 
