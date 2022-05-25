@@ -43,7 +43,7 @@ class ListPackageDocuments(View):
     пакетов документов
     """
 
-    COUNT_ELEMENTS_PAGE = 5
+    COUNT_ELEMENTS_PAGE = 30
 
     def get_list_package_documents(self):
         """
