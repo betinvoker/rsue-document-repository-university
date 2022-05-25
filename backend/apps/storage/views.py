@@ -1,15 +1,16 @@
 from django import forms
-from django.shortcuts import render
-from .models import PackageDocuments
-from .forms import PackageDocumentsForm
-from django.views.generic import View
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from .filters import PackageDocumentsFilter
 from django.core.paginator import Paginator
+from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.generic import View
+
+from .filters import PackageDocumentsFilter
+from .forms import PackageDocumentsForm
+from .models import PackageDocuments
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name="dispatch")
 class UploadPackageDocuments(View):
     """
     Обработка страницы загрузки
@@ -21,7 +22,7 @@ class UploadPackageDocuments(View):
         Обработка GET запроса
         """
         form = PackageDocumentsForm()
-        return render(request, template_name='upload-package-documents.html', context={"form":form})
+        return render(request, template_name="upload-package-documents.html", context={"form":form})
 
     def post(self, request):
         """
@@ -31,11 +32,11 @@ class UploadPackageDocuments(View):
         if form.is_valid():
             package_documents_instance = form.save()
             package_documents_instance.files_rename()
-            return render(request, template_name='upload-package-documents.html', context={"form":form, "object":package_documents_instance})
-        return render(request, template_name='upload-package-documents.html', context={"form":form})
+            return render(request, template_name="upload-package-documents.html", context={"form":form, "object":package_documents_instance})
+        return render(request, template_name="upload-package-documents.html", context={"form":form})
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name="dispatch")
 class ListPackageDocuments(View):
     """
     Обработка страницы списка
@@ -56,7 +57,7 @@ class ListPackageDocuments(View):
         Обработка GET запроса
         """
         filter = PackageDocumentsFilter(request.GET, self.get_list_package_documents())
-        page_number = request.GET.get('page')
+        page_number = request.GET.get("page")
         paginator = Paginator(filter.qs,self.COUNT_ELEMENTS_PAGE).get_page(page_number)
-        return render(request, template_name='list-package-documents.html', context={"form":filter.form,"page_objects":paginator})
+        return render(request, template_name="list-package-documents.html", context={"form":filter.form,"page_objects":paginator})
 

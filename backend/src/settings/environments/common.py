@@ -35,7 +35,7 @@ TEMPLATES = [
     },
 ]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ROOT_URLCONF = "src.urls"
 WSGI_APPLICATION = "src.wsgi.application"
 SITE_ID = 1

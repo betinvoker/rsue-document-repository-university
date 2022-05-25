@@ -9,4 +9,4 @@ class PackageDocumentsForm(ModelForm):
 
    class Meta:
       model = PackageDocuments
-      fields = ['year', 'level_education', 'qualification', 'teacher_full_name', 'students_full_name', 'review', 'graduation_work']
+      fields = ["year", "level_education", "qualification", "teacher_full_name", "students_full_name", "review", "graduation_work"]
